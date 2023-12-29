@@ -1,19 +1,32 @@
 'use strict';
-function checkForSpam(message) {
-	message = message.toLowerCase();
-	if (message.includes('sale') || message.includes('spam')) {
-		return true;
-	} else {
-		return false;
+const profile = {
+	username: "Jacob",
+	playTime: 300,
+	changeUsername(newName) {
+		this.username = newName;
+	},
+	updatePlayTime(hours) {
+		this.playTime += hours;
+	},
+	getInfo() {
+		return `${profile.username} has ${profile.playTime} active hours!`;
 	}
+};
 
 
-}
+/*
+Доповни об’єкт profile методами для роботи з його властивостями.
 
-console.log(checkForSpam("Latest technology news")); // false
-console.log(checkForSpam("JavaScript weekly newsletter")); // false
-console.log(checkForSpam("Get best sale offers now!")); // true
-console.log(checkForSpam("Amazing SalE, only tonight!")); // true
-console.log(checkForSpam("Trust me, this is not a spam message")); // true
-console.log(checkForSpam("Get rid of sPaM emails. Our book in on sale!")); // true
-console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
+Метод changeUsername(newName) повинен приймати рядок(нове ім’я) в параметр newName та змінювати значення властивості username на нове.Нічого не повертає.
+Метод updatePlayTime(hours) повинен приймати число(кількість годин) у параметр hours та збільшити на нього значення властивості playTime.Нічого не повертає.
+Метод getInfo() має повертати рядок формату < Username > has < amount > active hours!, де < Username > — це ім’я профілю, а < amount > — кількість ігрових годин.
+
+*/
+
+console.log(profile.getInfo()); // "Jacob has 300 active hours!"
+
+profile.changeUsername("Marco");
+console.log(profile.getInfo()); // "Marco has 300 active hours!"
+
+profile.updatePlayTime(20);
+console.log(profile.getInfo()); // "Marco has 320 active hours!"
